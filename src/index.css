@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Poppins";
+}
+
+.introduction .slick-dots {
+  bottom: -40px;
+}
+
+.introduction .slick-dots li button:before {
+  @apply text-xs;
+}
+
+.introduction .slick-dots li.slick-active button:before {
+  @apply text-primary;
+}
+
+.line-throw {
+  width: 100%;
+  max-width: 500px;
+  text-align: center; 
+  border-bottom: 1px solid #d1d5db; 
+  line-height: 0.1em;
+  margin: auto;
+} 
+
+.line-throw span { 
+   background:#fff; 
+   padding:0 10px; 
+}
