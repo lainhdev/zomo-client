@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import OnboardingPage from "../pages/OnboardingPage";
 import SigninPage from "../pages/auth/SigninPage";
 import SignupPage from "../pages/auth/SignupPage";
@@ -7,6 +7,10 @@ import SignInSocial from "../pages/auth/SignInSocial";
 import AuthenticationGuard from "../components/AuthenticationGuard";
 import HomePage from "../pages/HomePage";
 import RedirectPage from "../pages/RedirectPage";
+import SchedulePage from "../pages/SchedulePage";
+import ContactPage from "../pages/ContactPage";
+import SettingPage from "../pages/SettingPage";
+import AppLayout from "../components/AppLayout";
 
 const MainRoutes = () => {
   return (
@@ -19,13 +23,21 @@ const MainRoutes = () => {
         <Route path="/auth/callback/google" element={<SignInSocial />} />
         <Route path="/auth/callback/github" element={<SignInSocial />} />
         <Route
-          path="/home"
+          path="/app"
           element={
             <AuthenticationGuard>
-              <HomePage />
+              <AppLayout>
+                <Outlet />
+              </AppLayout>
             </AuthenticationGuard>
           }
-        />
+        >
+          <Route path="home" element={<HomePage />} />
+          <Route path="schedules" element={<SchedulePage />} />
+          <Route path="contact" element={<ContactPage />} />
+          <Route path="setting" element={<SettingPage />} />
+        </Route>
+
         <Route path="/" element={<RedirectPage />} />
       </Routes>
     </BrowserRouter>

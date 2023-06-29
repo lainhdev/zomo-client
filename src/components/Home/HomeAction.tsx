@@ -43,7 +43,7 @@ const HomeAction = () => {
         }`}
       ></div>
       <div
-        className={`absolute left-0 bottom-0 h-60 w-screen bg-white z-40 ease-in-out duration-300 rounded-t-[4.5rem] ${
+        className={`absolute left-0 bottom-0 h-72 max-w-screen-xl w-screen bg-white z-40 ease-in-out duration-300 rounded-t-[4.5rem] ${
           openStartMeetingDialog ? "translate-y-0" : "translate-y-full"
         }`}
       >
@@ -52,22 +52,15 @@ const HomeAction = () => {
         />
       </div>
       <div
-        className={`absolute left-0 top-0 h-screen w-screen bg-white z-30 ease-in-out duration-300 ${
-          openJoinDialog ? "translate-x-0" : "translate-x-full"
+        className={`absolute left-0 bottom-0 h-screen max-w-screen-xl w-screen bg-white z-30 ease-in-out duration-300 ${
+          openJoinDialog ? "translate-y-0" : "translate-y-full"
         }`}
       >
         <JoinDialog setOpenJoinDialog={setOpenJoinDialog} />
       </div>
       <div
-        className={`absolute left-0 top-0 h-screen w-screen bg-white z-30 ease-in-out duration-300 ${
-          openJoinDialog ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <JoinDialog setOpenJoinDialog={setOpenJoinDialog} />
-      </div>
-      <div
-        className={`absolute left-0 top-0 h-screen w-screen bg-white z-30 ease-in-out duration-300 ${
-          openScheduleDialog ? "translate-x-0" : "translate-x-full"
+        className={`absolute left-0 bottom-0 h-screen max-w-screen-xl w-screen bg-white z-30 ease-in-out duration-300 ${
+          openScheduleDialog ? "translate-y-0" : "translate-y-full"
         }`}
       >
         <ScheduleDialog setOpenScheduleDialog={setOpenScheduleDialog} />

@@ -1,12 +1,10 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const NavigationBar = () => {
   const location = useLocation();
-  console.log(location.pathname);
-  // const [curr, setcurr] = useState(second)
   return (
     <div className="absolute z-10 bottom-0 left-0 w-full justify-between px-12 pb-5 flex flex-row items-end bg-white pt-3">
-      <button className="cursor-pointer">
+      <Link to="/app/home" className="cursor-pointer">
         <img
           src={
             location.pathname.includes("home")
@@ -26,8 +24,8 @@ const NavigationBar = () => {
         >
           Home
         </p>
-      </button>
-      <button className="cursor-pointer">
+      </Link>
+      <Link to="/app/schedules" className="cursor-pointer">
         <img
           src={
             location.pathname.includes("schedule")
@@ -47,8 +45,8 @@ const NavigationBar = () => {
         >
           Schedule
         </p>
-      </button>
-      <button className="cursor-pointer">
+      </Link>
+      <Link to="/app/contact" className="cursor-pointer">
         <img
           src={
             location.pathname.includes("contact")
@@ -68,8 +66,8 @@ const NavigationBar = () => {
         >
           Contacts
         </p>
-      </button>
-      <button className="cursor-pointer">
+      </Link>
+      <Link to="/app/setting" className="cursor-pointer">
         <img
           src={
             location.pathname.includes("setting")
@@ -89,7 +87,7 @@ const NavigationBar = () => {
         >
           Setting
         </p>
-      </button>
+      </Link>
     </div>
   );
 };

@@ -36,7 +36,7 @@ const SigninWithPassword = () => {
       } else if (response.status === "WRONG_CREDENTIALS_ERROR") {
         toast.error("Email password combination is incorrect.");
       } else {
-        navigate("/home");
+        navigate("/app/home");
       }
     } catch (err: any) {
       console.log({ err });

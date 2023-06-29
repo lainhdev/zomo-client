@@ -55,7 +55,7 @@ const SignupPage = () => {
       } else {
         // sign up successful. The session tokens are automatically handled by
         // the frontend SDK.
-        navigate("/home");
+        navigate("/app/home");
       }
     } catch (err: any) {
       console.log({ err });

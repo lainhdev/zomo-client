@@ -12,7 +12,7 @@ const RedirectPage = () => {
     dataFetchedRef.current = true;
     const path = location.pathname;
     setTimeout(() => {
-      path === "/" ? navigate("/home") : navigate(path);
+      path === "/" ? navigate("/app/home") : navigate(path);
     }, 1000);
   }, []);
 

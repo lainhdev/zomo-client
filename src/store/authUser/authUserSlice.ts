@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAuthUserThunk } from "./authUserThunk";
-import { AuthUser } from "../../utils/types";
+import { getAuthUserThunk, updateUserInfoThunk } from "./authUserThunk";
+import { User } from "../../utils/types";
 
-const initialState: AuthUser = {
+const initialState: User = {
   email: "",
   id: "",
   nickname: "",
@@ -22,6 +22,11 @@ export const authUser = createSlice({
       state.nickname = action.payload.nickname;
       state.picture = action.payload.picture;
       state.provider = action.payload.provider;
+    });
+    builder.addCase(updateUserInfoThunk.fulfilled, (state, action) => {
+      console.log("updateUserInfoThunk.fulfilled");
+      state.nickname = action.payload.nickname;
+      state.picture = action.payload.picture;
     });
   },
 });
