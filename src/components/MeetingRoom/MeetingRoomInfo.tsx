@@ -29,7 +29,7 @@ const MeetingRoomInfo = ({
       <p className="px-10 font-light">
         Invite Link<i className="w-4 inline-block"></i>:{" "}
         <b className="ml-2 font-bold text-xs">
-          https://zomo.onrender.com/room/{ongoingMeeting?.id}
+          https://zomo.onrender.com/app/room/{ongoingMeeting?.id}
         </b>
       </p>
       <button

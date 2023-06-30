@@ -8,7 +8,7 @@ const InviteMeeting = ({
   handleOpenInvite: (params: boolean) => void;
 }) => {
   return (
-    <div className="pt-10 w-full h-full max-w-xl">
+    <div className="pt-10 w-full h-full max-w-xl overflow-hidden">
       <div className="flex flex-row items-center mx-5">
         <button
           onClick={() => handleOpenInvite(false)}

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import MeetingRoom from "./MeetingRoom/MeetingRoom";
 import NavigationBar from "./NavigationBar/NavigationBar";
 import { useAppDispatch } from "../store/hooks";
@@ -9,13 +9,13 @@ import {
 } from "../store/contact/contactThunk";
 import { getAllMeetingsThunk } from "../store/meetingRoom/meetingThunk";
 
+let dataFetchedRef = false;
 const Welcome = ({ children }: { children: React.ReactNode }) => {
-  const dataFetchedRef = useRef(false);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (dataFetchedRef.current) return;
-    dataFetchedRef.current = true;
+    if (dataFetchedRef) return;
+    dataFetchedRef = true;
     dispatch(getAuthUserThunk());
     dispatch(getAllUsersThunk());
     dispatch(getAllFavoriteContactsThunk());

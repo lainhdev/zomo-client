@@ -1,9 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Session from "supertokens-web-js/recipe/session";
 
+let dataFetchedRef = false;
 const AuthenticationGuard = ({ children }: { children: React.ReactNode }) => {
-  const dataFetchedRef = useRef(false);
   const navigate = useNavigate();
 
   async function doesSessionExist() {
@@ -15,8 +15,8 @@ const AuthenticationGuard = ({ children }: { children: React.ReactNode }) => {
   }
 
   useEffect(() => {
-    if (dataFetchedRef.current) return;
-    dataFetchedRef.current = true;
+    if (dataFetchedRef) return;
+    dataFetchedRef = true;
     doesSessionExist();
   }, []);
 

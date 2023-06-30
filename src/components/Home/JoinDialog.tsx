@@ -6,6 +6,7 @@ import {
   setOngoingMeeting,
 } from "../../store/meetingRoom/meetingRoomSlice";
 import { joinMeetingThunk } from "../../store/meetingRoom/meetingThunk";
+import { toast } from "react-toastify";
 
 const JoinDialog = ({
   setOpenJoinDialog,
@@ -33,6 +34,8 @@ const JoinDialog = ({
       setTimeout(() => {
         dispatch(setIsOpenMeetingRoom(true));
       }, 100);
+    } else {
+      toast.error("Cannot join meeting");
     }
   };
   return (

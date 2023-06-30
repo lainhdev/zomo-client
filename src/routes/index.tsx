@@ -11,6 +11,7 @@ import SchedulePage from "../pages/SchedulePage";
 import ContactPage from "../pages/ContactPage";
 import SettingPage from "../pages/SettingPage";
 import AppLayout from "../components/AppLayout";
+import RoomRedirectPage from "../pages/RoomRedirectPage";
 
 const MainRoutes = () => {
   return (
@@ -36,6 +37,7 @@ const MainRoutes = () => {
           <Route path="schedules" element={<SchedulePage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="setting" element={<SettingPage />} />
+          <Route path="room/:id" element={<RoomRedirectPage />} />
         </Route>
 
         <Route path="/" element={<RedirectPage />} />

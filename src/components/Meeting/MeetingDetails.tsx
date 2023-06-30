@@ -2,8 +2,12 @@ import moment from "moment";
 import { Meeting } from "../../utils/types";
 import { useState } from "react";
 import InviteMeeting from "./InviteMeeting";
-import { useAppDispatch } from "../../store/hooks";
-import { setInviteMeeting } from "../../store/meetingRoom/meetingRoomSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import {
+  setInviteMeeting,
+  setIsOpenMeetingRoom,
+  setOngoingMeeting,
+} from "../../store/meetingRoom/meetingRoomSlice";
 import { deleteMeetingThunk } from "../../store/meetingRoom/meetingThunk";
 import { toast } from "react-toastify";
 
@@ -15,6 +19,7 @@ const MeetingDetails = ({
   setOpenDetails: (params: boolean) => void;
 }) => {
   const [openInvite, setOpenInvite] = useState(false);
+  const authUser = useAppSelector((state) => state.authUser);
   const dispatch = useAppDispatch();
   const handleOpenInvite = (value: boolean) => {
     setOpenInvite(value);
@@ -27,6 +32,13 @@ const MeetingDetails = ({
     const result = await dispatch(deleteMeetingThunk(meeting.id));
     if (deleteMeetingThunk.fulfilled.match(result))
       toast.success(`deleted meeting ${result.payload.topic} successfully`);
+  };
+
+  const handleJoinMeeting = async () => {
+    dispatch(setOngoingMeeting(meeting));
+    setTimeout(() => {
+      dispatch(setIsOpenMeetingRoom(true));
+    }, 100);
   };
   return (
     <div className="w-full relative h-full max-w-xl mx-auto">
@@ -80,23 +92,34 @@ const MeetingDetails = ({
           {(Number(meeting.end) - Number(meeting.start)) / (60 * 1000)} minutes
         </p>
       </div>
-      <div className="absolute bottom-10 left-0 right-0">
-        <button className="bg-primary w-5/6 mx-auto rounded-full block my-5 py-3 cursor-pointer text-white">
-          Join
-        </button>
-        <button
-          onClick={() => handleOpenInvite(true)}
-          className="bg-[#E9F0FF] w-5/6 mx-auto rounded-full block my-5 py-3 cursor-pointer text-primary"
-        >
-          Invite
-        </button>
-        <button
-          onClick={() => handleDeleteMeeting()}
-          className="bg-[#ffe1e5] w-5/6 mx-auto rounded-full block my-5 py-3 cursor-pointer text-[#ff4b61]"
-        >
-          Delete
-        </button>
-      </div>
+      {Number(meeting.end) > Date.now() ? (
+        <div className="absolute bottom-10 left-0 right-0">
+          <button
+            onClick={() => handleJoinMeeting()}
+            className="bg-primary w-5/6 mx-auto rounded-full block my-5 py-3 cursor-pointer text-white"
+          >
+            Join
+          </button>
+          {authUser.id === meeting.userId && (
+            <>
+              <button
+                onClick={() => handleOpenInvite(true)}
+                className="bg-[#E9F0FF] w-5/6 mx-auto rounded-full block my-5 py-3 text-primary"
+              >
+                Invite
+              </button>
+              <button
+                onClick={() => handleDeleteMeeting()}
+                className="bg-[#ffe1e5] w-5/6 mx-auto rounded-full block my-5 py-3 text-[#ff4b61]"
+              >
+                Delete
+              </button>
+            </>
+          )}
+        </div>
+      ) : (
+        <></>
+      )}
       <div
         className={`absolute left-0 top-0 h-screen w-screen max-w-screen-xl bg-white z-30 ease-in-out duration-300 ${
           openInvite ? "translate-y-0" : "translate-y-full"

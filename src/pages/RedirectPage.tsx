@@ -1,15 +1,15 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { HashLoader } from "react-spinners";
 
+let dataFetchedRef = false
 const RedirectPage = () => {
-  const dataFetchedRef = useRef(false);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (dataFetchedRef.current) return;
-    dataFetchedRef.current = true;
+    if (dataFetchedRef) return;
+    dataFetchedRef = true;
     const path = location.pathname;
     setTimeout(() => {
       path === "/" ? navigate("/app/home") : navigate(path);

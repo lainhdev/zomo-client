@@ -1,9 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { thirdPartySignInAndUp } from "supertokens-web-js/recipe/thirdpartyemailpassword";
 
+let dataFetchedRef = false;
+
 const SignInSocial = () => {
-  const dataFetchedRef = useRef(false);
   const navigate = useNavigate();
 
   async function handleGoogleCallback() {
@@ -41,8 +42,8 @@ const SignInSocial = () => {
   }
 
   useEffect(() => {
-    if (dataFetchedRef.current) return;
-    dataFetchedRef.current = true;
+    if (dataFetchedRef) return;
+    dataFetchedRef = true;
     handleGoogleCallback();
   }, []);
   return <div></div>;

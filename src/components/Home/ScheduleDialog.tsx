@@ -18,12 +18,7 @@ const ScheduleDialog = ({
   const [topic, setTopic] = useState("");
   const dispatch = useAppDispatch();
 
-  const onChangeDate = (value: string) => {
-    console.log({ onChangeDate: value });
-    setDateSelected(value);
-  };
   const onChangeTimeStart = (value: string) => {
-    console.log({ value });
     if (timeEnd && value > timeEnd) return setTimeStart(timeEnd);
     setTimeStart(value);
   };
