@@ -57,7 +57,7 @@ const ContactElement = ({ contact }: { contact: User }) => {
   }, [favoriteContacts, contact.id]);
 
   return (
-    <div className="flex flex-row items-center justify-between mb-3 max-w-lg md:max-w-screen-xl">
+    <div className="flex flex-row items-center justify-between mb-3 max-w-lg md:max-w-xl">
       <div className="flex flex-row items-center">
         <img src={contact.picture} width={35} height={35} />
         <p className="font-bold ml-5">{contact.nickname}</p>

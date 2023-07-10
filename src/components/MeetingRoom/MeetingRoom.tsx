@@ -31,7 +31,7 @@ const MeetingRoom = () => {
   };
   return (
     <div
-      className={`absolute max-w-screen-xl left-0 top-0 h-screen w-screen bg-[#000] z-50 ease-in-out duration-1000 ${
+      className={`absolute max-w-xl left-0 top-0 h-screen w-screen bg-[#000] z-50 ease-in-out duration-1000 ${
         meetingRoom.isOpen ? "translate-y-0" : "translate-y-full"
       }`}
     >

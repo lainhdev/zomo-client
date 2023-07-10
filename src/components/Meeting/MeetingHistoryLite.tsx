@@ -29,7 +29,7 @@ const MeetingHistoryLite = () => {
           : ""}
       </div>
       <div
-        className={`absolute left-0 bottom-0 h-screen max-w-screen-xl w-screen bg-white z-30 ease-in-out duration-300 ${
+        className={`absolute left-0 bottom-0 h-screen max-w-xl w-screen bg-white z-30 ease-in-out duration-300 ${
           isOpenFullHistory ? "translate-y-0" : "translate-y-full"
         }`}
       >

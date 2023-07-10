@@ -121,7 +121,7 @@ const MeetingDetails = ({
         <></>
       )}
       <div
-        className={`absolute left-0 top-0 h-screen w-screen max-w-screen-xl bg-white z-30 ease-in-out duration-300 ${
+        className={`absolute left-0 top-0 h-screen w-screen max-w-xl bg-white z-30 ease-in-out duration-300 ${
           openInvite ? "translate-y-0" : "translate-y-full"
         }`}
       >
